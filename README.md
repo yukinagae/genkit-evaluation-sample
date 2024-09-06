@@ -75,6 +75,14 @@ $ npm run check     # scan without modifying files
 $ npm run fix       # modify files
 ```
 
+### Kill Existing Processes
+
+Sometimes existing processes are still running, preventing you from running genkit locally because the ports are already in use. In that case, run the following command to kill the processes tied to the ports:
+
+```bash
+$ npm run kill
+```
+
 ## License
 
 MIT
