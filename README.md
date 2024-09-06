@@ -1,5 +1,7 @@
 # genkit-evaluation-sample
 
+This sample repository demonstrates how to evaluate your LLM's responses using [Firebase Genkit](https://firebase.google.com/docs/genkit). For more information, see [Firebase Genkit - Evaluation](https://firebase.google.com/docs/genkit/evaluation).
+
 - [Requirements](#requirements)
 - [Setup](#setup)
 - [Usage](#usage)
