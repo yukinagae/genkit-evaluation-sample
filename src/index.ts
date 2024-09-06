@@ -1,12 +1,25 @@
-import * as z from 'zod'
 import { generate } from '@genkit-ai/ai'
 import { configureGenkit } from '@genkit-ai/core'
+import { GenkitMetric, genkitEval } from '@genkit-ai/evaluator'
 import { defineFlow } from '@genkit-ai/flow'
-import { googleAI } from '@genkit-ai/googleai'
-import { gemini15Flash } from '@genkit-ai/googleai'
+import { gemini15Flash, textEmbeddingGecko, vertexAI } from '@genkit-ai/vertexai'
+import * as z from 'zod'
 
 configureGenkit({
-  plugins: [googleAI()],
+  plugins: [
+    vertexAI(),
+    genkitEval({
+      judge: gemini15Flash,
+      metrics: [
+        GenkitMetric.FAITHFULNESS,
+        GenkitMetric.ANSWER_RELEVANCY,
+        GenkitMetric.MALICIOUSNESS,
+      ],
+      // GenkitMetric.ANSWER_RELEVANCY requires an embedder
+      // NOTE: Currently, only Vertex AI supports textEmbeddingGecko.
+      embedder: textEmbeddingGecko,
+    }),
+  ],
   logLevel: 'debug',
   enableTracingAndMetrics: true,
 })

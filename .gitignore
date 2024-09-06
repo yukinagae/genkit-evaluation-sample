@@ -148,3 +148,6 @@ dist
 
 # genkit
 lib
+
+# env
+.env

@@ -39,12 +39,13 @@ $ npm install
 
 ## Usage
 
-1. **Set the `GOOGLE_GENAI_API_KEY` Environment Variable**
+1. Authentication and Google Cloud project configuration
 
-Before running the project, you need to provide your Gemini API key. This key allows your application to communicate with Gemini's services. Replace `your_api_key` with the actual API key you obtained from Gemini.
+Follow these steps to login and configure the project:
 
 ```bash
-$ export GOOGLE_GENAI_API_KEY=your_api_key
+$ gcloud auth application-default login
+$ gcloud config set core/project [your-project-id]
 ```
 
 2. **Run the Genkit server locally**
@@ -56,6 +57,14 @@ $ genkit start -o
 ```
 
 Now you can play with it!
+
+## Evaluation
+
+To evaluate your flow, run the following command:
+
+```bash
+$ genkit eval:flow menuSuggestionFlow --input testInputs.json
+```
 
 ## Making Changes
 
